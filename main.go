@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/OlaIsaac/tech-talk/prompts"
 	"github.com/OlaIsaac/tech-talk/tools"
 	"github.com/mark3labs/mcp-go/server"
 )
@@ -12,7 +13,7 @@ func main() {
 
 	fmt.Println("Creating MCP server")
 	s := server.NewMCPServer(
-		"Calculator Demo",
+		"Tech Talk Demo",
 		"1.0.0",
 		server.WithToolCapabilities(false),
 		server.WithRecovery(),
@@ -23,6 +24,9 @@ func main() {
 
 	marvelTool, marvelHandler := tools.GetCharacterTool()
 	s.AddTool(marvelTool, marvelHandler)
+
+	createPRPrompt, createPRHandler := prompts.CreatePR()
+	s.AddPrompt(createPRPrompt, createPRHandler)
 
 	// Start the server
 	httpServer := server.NewStreamableHTTPServer(s)
