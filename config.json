@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+        "credit-mcp": {
+            "type": "remote",
+            "url": "http://localhost:8080/mcp"
+        },
+        "tech-talk-mcp": {
+            "type": "remote",
+            "url": "http://localhost:8885/mcp"
+        }
+    }
+}
